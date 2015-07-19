@@ -27,6 +27,11 @@
 				class="loginbox">
 		</p>
 		<br>
+
+		<p>
+			<input type="submit" value="Post Your Add" class="Loginbutton"><input
+				type="reset" value="Reset" class="loginbutton">
+		</p>
 	</form>
 </body>
 </html>
