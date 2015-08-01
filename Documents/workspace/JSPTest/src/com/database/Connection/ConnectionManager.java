@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
 
+	//Login information
 	static final String serverName = "localhost";
 	static final String portNumber = "3306";
 	static final String databaseName = "JSPTest";

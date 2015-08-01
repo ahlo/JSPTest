@@ -31,20 +31,20 @@
 		</h3>
 		<p>* Fields are mandatory</p>
 		<p>
-			* Item Name:<br> <input type="text" name="PostName"
+			Item Name*:<br> <input type="text" name="PostName"
 				class="loginbox">
 		</p>
 		<p>
-			* Post Type:<br> <input type="radio" name="PostType"
+			Post Type*:<br> <input type="radio" name="PostType"
 				value="Offer" class="loginbox" checked> I am offering this
 			item.<br> <input type="radio" name="PostType" value="Want"
 				class="loginbox"> I want this item.
 		</p>
 		<p>
-			* Price:<br> <input type="text" name="PostPrice" class=logingbox>
+			Price*:<br> <input type="text" name="PostPrice" class=logingbox>
 		</p>
 		<p>
-			* Description:<br>
+			Description*:<br>
 			<textarea name="PostDescription" rows="4" cols="50">Please insert the description of the item you want to sell here.</textarea>
 		</p>
 		<p>
