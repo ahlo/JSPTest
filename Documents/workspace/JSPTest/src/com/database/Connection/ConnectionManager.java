@@ -1,13 +1,17 @@
 package com.database.Connection;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ConnectionManager {
 
 	static final String serverName = "localhost";
 	static final String portNumber = "3306";
 	static final String databaseName = "JSPTest";
-	static final String url = "jdbc:mysql://" + serverName + ":" + portNumber + "/" + "databaseName";
+	static final String url = "jdbc:mysql://" + serverName + ":" + portNumber + "/" + databaseName;
 	static final String userName = "admin";
 	static final String password = "admin";
 
@@ -34,6 +38,32 @@ public class ConnectionManager {
 			catch(SQLException e) {
 				e.printStackTrace();
 				System.out.println("Database connection cannot be closed.");
+			}
+		}
+	}
+	
+	public static void closeResultSet(ResultSet rs) {
+		if(rs != null) {
+			try {
+				rs.close();
+				System.out.println("Result set closed.");
+			}
+			catch(SQLException e) {
+				e.printStackTrace();
+				System.out.println("Result set cannot be close.");
+			}
+		}
+	}
+	
+	public static void closePreparedStatement(PreparedStatement ps) {
+		if(ps != null) {
+			try {
+				ps.close();
+				System.out.println("Prepared statement closed.");
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println("Prepared statement cannot be closed.");
 			}
 		}
 	}
