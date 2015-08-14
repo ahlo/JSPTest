@@ -11,7 +11,7 @@ public class ConnectionManager {
 	//Login information
 	static final String serverName = "localhost";
 	static final String portNumber = "3306";
-	static final String databaseName = "JSPTest";
+	static final String databaseName = "mydb";
 	static final String url = "jdbc:mysql://" + serverName + ":" + portNumber + "/" + databaseName;
 	static final String userName = "admin";
 	static final String password = "admin";

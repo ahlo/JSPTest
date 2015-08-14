@@ -60,7 +60,7 @@ public class CreatePostController extends HttpServlet {
 		}
 		finally {
 			request.getRequestDispatcher("viewallpost.jsp");
-			response.getWriter().append("ERROR 404: WHAT ARE YOU DOING?");
+			response.getWriter().append("ERROR 404: viewallpost.jsp not yet implemeneted.");
 		}
 	}
 }
