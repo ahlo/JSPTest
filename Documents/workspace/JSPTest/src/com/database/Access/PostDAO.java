@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.beans.Post;
 import com.database.Connection.ConnectionManager;
@@ -62,6 +63,50 @@ public class PostDAO {
 			ConnectionManager.closeConnection(con);
 		}
 		return postId;
+	}
+	
+	
+	public ArrayList<Post> getAllPosts(){
+		Connection con = null;
+		ArrayList<Post> channels = new ArrayList<Post>();
+		
+		try{			
+			// Get the connection using Connection Manager
+			con = ConnectionManager.getConnection();
+			PreparedStatement preparedStatement3 = con.prepareStatement("SELECT CHANNEL.CHANNEL_NAME, CHANNEL.CHANNEL_BAND, CHANNEL.CHANNEL_CHARGE_TYPE,"
+					+"CHANNEL.CHANNEL_TRANSMISSION_TYPE,CHANNEL.CHANNEL_CHARGE, CHANNEL_BANDS.VIDEO_CARRIER_FREQUENCY, "
+					+"CHANNEL_BANDS.AUDIO_CARRIER_FREQUENCY "
+					+"FROM CHANNEL "
+					+"INNER JOIN CHANNEL_BANDS "
+					+"ON CHANNEL.CHANNEL_BAND=CHANNEL_BANDS.CHANNEL_BAND");
+			ResultSet rs = preparedStatement3.executeQuery();
+
+			while(rs.next()){
+				Post post=new Post();
+				String postName = rs.getString("CHANNEL_NAME");
+				String channelBand = rs.getString("CHANNEL_BAND");
+				String channelChargeType = rs.getString("CHANNEL_CHARGE_TYPE");
+				String channelTransmissionType = rs.getString("CHANNEL_TRANSMISSION_TYPE");
+				Float channelCharge= rs.getFloat("CHANNEL_CHARGE");
+				int videoCarrierFrequency = rs.getInt("VIDEO_CARRIER_FREQUENCY");
+				int audioCarrierFrequency = rs.getInt("AUDIO_CARRIER_FREQUENCY");
+
+				channel.setChannelName(channelName);
+				channel.setChannelBand(channelBand);
+				channel.setChannelChargeType(channelChargeType);
+				channel.setChannelTransmissionType(channelTransmissionType);
+				channel.setChannelCharge(channelCharge);
+				channel.setVideoCarrierFrequency(videoCarrierFrequency);
+				channel.setAudioCarrierFrequency(audioCarrierFrequency);
+				channels.add(channel);
+			}
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			ConnectionManager.closeConnection(con);
+		}
+		return channels;
 	}
 
 }
