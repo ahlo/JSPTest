@@ -72,3 +72,13 @@ BEGIN
 	SELECT post_id FROM posts ORDER BY post_id DESC LIMIT 1;
 END$$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS `sp_get_all_post`$$
+
+CREATE DEFINER=`admin`@`localhost` PROCEDURE `sp_get_all_post`()
+BEGIN
+	SELECT posts.post_id, posts.post_name, posts.post_type, posts.post_price, posts.post_description FROM posts;
+END$$
+DELIMITER ;
+    

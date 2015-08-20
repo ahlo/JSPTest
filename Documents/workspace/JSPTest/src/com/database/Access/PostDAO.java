@@ -68,8 +68,16 @@ public class PostDAO {
 	
 	public ArrayList<Post> getAllPosts(){
 		Connection con = null;
-		ArrayList<Post> channels = new ArrayList<Post>();
+		ArrayList<Post> posts = new ArrayList<Post>();
 		
+		cs.setString(1, post.getPostName());
+		cs.setString(2, post.getPostType());
+		cs.setDouble(3, post.getPostPrice());
+		cs.setString(4, post.getPostDescription());
+		cs.setDate(5, post.getCreationDate());
+		cs.execute();
+		
+
 		try{			
 			// Get the connection using Connection Manager
 			con = ConnectionManager.getConnection();
@@ -83,7 +91,7 @@ public class PostDAO {
 
 			while(rs.next()){
 				Post post=new Post();
-				String postName = rs.getString("CHANNEL_NAME");
+				String postName = rs.getString("post_name");
 				String channelBand = rs.getString("CHANNEL_BAND");
 				String channelChargeType = rs.getString("CHANNEL_CHARGE_TYPE");
 				String channelTransmissionType = rs.getString("CHANNEL_TRANSMISSION_TYPE");
@@ -106,7 +114,7 @@ public class PostDAO {
 		}finally{
 			ConnectionManager.closeConnection(con);
 		}
-		return channels;
+		return posts;
 	}
 
 }
